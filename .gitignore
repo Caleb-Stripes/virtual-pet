@@ -1,6 +1,4 @@
 .classpath
 .git/
-.gradle/
 .project
 .settings/
-build.gradle
