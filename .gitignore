@@ -2,3 +2,5 @@
 .git/
 .project
 .settings/
+bin/
+.gradle/

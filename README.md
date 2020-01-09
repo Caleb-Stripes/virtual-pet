@@ -1,0 +1,1 @@
+Created directory in GitBash then imported to directory by pasting curl command and url. Imported to Eclipse using file-import. Then created README.md file in virtual-pet project folder.
