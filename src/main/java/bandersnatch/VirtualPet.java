@@ -28,6 +28,35 @@ public class VirtualPet {
 		return name;
 	}
 
+	public static int getTick() {
+		hunger++;
+		return 0;
+	}
+	//another tick method to work in a more complex way
+	public static String getSleep() {
+		if (fatigue >= 20) {
+			status = "Asleep";
+		} else {
+			fatigue = fatigue + 3;
+			status = "Awake";
+		}
+		return status;
+	}
+	//alternates tick with getSleep()
+	public static String getWake() throws InterruptedException {
+		if (fatigue > 0) {
+			fatigue = fatigue - 7;
+			status = "Asleep";
+			System.out.println(name + " is napping.\n");
+			Thread.sleep(2000);
+		} else {
+			fatigue = 0;
+			status = "Awake";
+			System.out.println(name + " wakes up.");
+		}
+		return status;
+	}
+	
 	private String play;
 
 	public String getPlay() {
@@ -47,22 +76,21 @@ public class VirtualPet {
 		if (playNumber > 9) {
 			play = " brings you a vorpal sword.";
 		}
-		//add fatigue multiplier
+		// add fatigue multiplier
 		System.out.println(name + play + "\n");
 		return play;
 	}
-	
+
 	public static int getTrain() {
 		if (fatigue < 10) {
 			level++;
 			fatigue = fatigue + 7;
 			System.out.println(name + " trains hard.\n");
-		}
-		else {
+		} else {
 			System.out.println(name + " is too tired to train.\n");
 		}
 		return level;
-		
+
 	}
 
 	static void preyChoices() {
@@ -73,11 +101,11 @@ public class VirtualPet {
 		System.out.println("4. Troll");
 		System.out.println("5. Dragon");
 	}
-	
+
 	public static int prey;
-	
+
 	public static String choosePrey;
-	
+
 	public static int preyFix() {
 		if (choosePrey.contentEquals("1")) {
 			prey = 1;
@@ -93,11 +121,10 @@ public class VirtualPet {
 			prey = 0;
 		}
 		return prey;
-		}
-	
-	
-private static String hunt;
-	
+	}
+
+	private static String hunt;
+
 	public static String getHunt() {
 		int huntCheckRoll = (int) ((Math.random() * 10) + (Math.random() * 10));
 		int huntCheck = huntCheckRoll + level;
@@ -111,7 +138,7 @@ private static String hunt;
 
 		if (huntCheck >= targetPrey[prey - 1]) {
 			hunt = "Success! " + name + " caught and ate a " + preyName[prey - 1] + ".";
-			hunger = hunger - (2 * (targetPrey[prey -1] / 5));
+			hunger = hunger - (2 * (targetPrey[prey - 1] / 5));
 		} else {
 			hunt = "" + name + " could not catch a " + preyName[prey - 1] + ".";
 		}
@@ -130,7 +157,7 @@ private static String hunt;
 		} else {
 			hungerCheck = name + " is near starvation, ";
 		}
-		
+
 		String fatigueCheck = null;
 		if (fatigue < 10) {
 			fatigueCheck = "alert, ";
@@ -141,7 +168,7 @@ private static String hunt;
 		} else {
 			fatigueCheck = "";
 		}
-		
+
 		String levelCheck = null;
 		if (level < 3) {
 			levelCheck = "untrained, ";
@@ -166,11 +193,11 @@ private static String hunt;
 		System.out.println("4. Synopsis");
 		System.out.println("5. Quit Program");
 	}
+
 	public static int action;
-	
+
 	public static String chooseMenu;
-	
-	
+
 	public static int menuFix() {
 		if (chooseMenu.contentEquals("1")) {
 			action = 1;
@@ -216,41 +243,19 @@ private static String hunt;
 		System.out.println(" <HHHHHHH>");
 	}
 
-	public static String getSleep() {
-		if (fatigue >= 20) {
-			status = "Asleep";
-		} else {
-			fatigue = fatigue + 3;
-			status = "Awake";
-		}
-		return status;
-	}
-	
-	public static String getWake() {
-		if (fatigue > 0) {
-			fatigue = fatigue - 7;
-			status = "Asleep";
-			System.out.println(name + " is napping.");
-		} else {
-			fatigue = 0;
-			status = "Awake";
-			System.out.println(name + " wakes up.");
-		} return status;
-	}
-	
-	
 	static String statusTracker() {
-	System.out.println("Hunger=" + hunger + " Level=" + level + " Fatigue=" + fatigue + " Status=" + status);
-	return null;
+		System.out.println("Hunger=" + hunger + " Level=" + level + " Fatigue=" + fatigue + " Status=" + status);
+		return null;
 	}
-	
+
 	public static int hungerFix() {
 		if (hunger < 0) {
 			hunger = 0;
-		}
-		else {
-			
+		} else {
+
 		}
 		return hunger;
 	}
-	}
+
+
+}

@@ -6,9 +6,6 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
-	
-
-	
 	VirtualPet underTest = new VirtualPet(1, 1, 1, "Awake");
 
 	@Test
@@ -41,11 +38,17 @@ public class VirtualPetTest {
 		assertEquals("Not hungry, alert, untrained, and Awake" + "\n", result);
 
 	}
-	
+
 	@Test
 	void statusShouldSayAwake5() {
 		String result = VirtualPet.getSleep();
 		assertEquals("Awake", result);
+	}
+	
+	@Test
+	void tickShouldIncreaseTo2() {
+		int result = VirtualPet.getTick();
+		assertEquals(2, result);
 	}
 
 }
